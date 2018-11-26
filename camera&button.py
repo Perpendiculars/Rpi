@@ -45,3 +45,5 @@ def run_pushing(event_from_button):
             )
         # For rinning on Gosha's server inser host, port
         app.run(host='0.0.0.0', port=80, debug=True)
+    else:
+        print('LOL!!! Press the button or die')
