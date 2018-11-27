@@ -12,14 +12,16 @@ class Camera(object):
             PROP_FRAME_WIDTH = cv2.CAP_PROP_FRAME_WIDTH
             PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT
 
-        self.video = cv2.VideoCapture(0)
-        self.video.set(PROP_FRAME_WIDTH, 640)
-        self.video.set(PROP_FRAME_HEIGHT, 480)
+        self.cap = cv2.VideoCapture(0)
+        self.cap.set(PROP_FRAME_WIDTH, 640)
+        self.cap.set(PROP_FRAME_HEIGHT, 480)
+
+        for i in range(4): self.cap.read()
 
     def __del__(self):
-        self.video.release()
+        self.cap.release()
 
     def get_frame(self):
-        success, image = self.video.read()
+        success, image = self.cap.read()
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tostring()
