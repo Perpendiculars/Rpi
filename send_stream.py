@@ -17,10 +17,9 @@ def button_callback(channel):
     cam.init()
     cam.start()
 
-    print("\nKey pressed")
     while serv.send_request(gen(cam)) != 500:
         pass
-    print("\ntransmition terminated")
+    print("\n>transmition terminated")
 
     cam.release()
    
@@ -28,6 +27,8 @@ def button_callback(channel):
 if __name__ == '__main__':
     btn = buttonRpi(37, button_callback)
     btn.set_event()
+
+    print("\n>ready")
     try:
         while(1): pass
     except KeyboardInterrupt:
