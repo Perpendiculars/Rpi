@@ -43,3 +43,6 @@ class buttonRpi:
 
     def clean(self):
         GPIO.cleanup()
+
+    def __del__(self):
+        GPIO.cleanup()
