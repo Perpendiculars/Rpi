@@ -13,10 +13,9 @@ class Camera(object):
             PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT
 
         self.cap = cv2.VideoCapture(0)
+        self.cap.release()
         self.cap.set(PROP_FRAME_WIDTH, 640)
         self.cap.set(PROP_FRAME_HEIGHT, 480)
-
-        for i in range(4): self.cap.read()
 
     def __del__(self):
         self.cap.release()
@@ -25,3 +24,15 @@ class Camera(object):
         success, image = self.cap.read()
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tostring()
+
+    def init(self):
+        self.cap = cv2.VideoCapture(0)
+
+    def release(self):
+        self.cap.release()
+
+    def isOpened(self):
+        return self.cap.isOpened()
+
+    def start(self):
+        for i in range(4): self.cap.read()
