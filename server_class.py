@@ -3,7 +3,7 @@ import requests
 
 class Server:
     address = 'https://intelligent-nurse.azurewebsites.net/Translation/Set'
-    ID = '999111666'
+    ID = '999666111'
     location = ''
 
     def __init__(self, address = None):
@@ -20,7 +20,6 @@ class Server:
 
     def send_request(self, data):
         url = self.address + '/' + self.location
-        #payload = {'some':'data'} json.dumps(payload)
         headers = {'parameters':self.ID}
         
         return(requests.post(url, data=data, headers=headers).status_code)
