@@ -14,6 +14,11 @@ def button_callback(channel):
     if cam.isOpened():
         return;
     
+    location = serv.get_response()
+    if location == None:
+        return;
+    serv.set_location(location)
+    
     cam.init()
     cam.start()
 
