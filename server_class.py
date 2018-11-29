@@ -14,7 +14,8 @@ class Server:
         location = None
         address = self.address
         try:
-            headers = requests.get(address, headers={'parameters':self.ID}).headers
+            headers = requests.get(address, 
+                    headers={'parameters':self.ID}).headers
             if "Location" in headers:
                 location = headers["Location"]
         except:
