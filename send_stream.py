@@ -9,7 +9,7 @@ def gen(camera):
     frame = camera.get_frame()
     return frame
 
-def button_callback(channel):
+def button_callback():
     if cam.isOpened():
         return;
     
@@ -29,12 +29,13 @@ def button_callback(channel):
    
 
 if __name__ == '__main__':
-    btn = buttonRpi(37, button_callback)
-    btn.set_event()
+    btn = buttonRpi()
 
     print("\n>ready")
     try:
-        while(1): pass
+        while(1):
+            if btn.get_state():
+                button_callback()
     except KeyboardInterrupt:
         pass
 
