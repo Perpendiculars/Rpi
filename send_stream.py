@@ -7,12 +7,16 @@ serv = Server()
 
 def gen(camera):
     frame = camera.get_frame()
-    yield(b'--frame\r\n'
-        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+    return frame
 
-def button_callback(channel):
+def button_callback():
     if cam.isOpened():
         return;
+    
+    location = serv.get_response()
+    if location == None:
+        return;
+    serv.set_location(location)
     
     cam.init()
     cam.start()
@@ -25,12 +29,13 @@ def button_callback(channel):
    
 
 if __name__ == '__main__':
-    btn = buttonRpi(37, button_callback)
-    btn.set_event()
+    btn = buttonRpi()
 
     print("\n>ready")
     try:
-        while(1): pass
+        while(1):
+            if btn.get_state():
+                button_callback()
     except KeyboardInterrupt:
         pass
 
