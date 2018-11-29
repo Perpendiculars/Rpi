@@ -13,9 +13,12 @@ class Server:
     def get_response(self):
         location = None
         address = self.address
-        headers = requests.get(address, headers={'parameters':self.ID}).headers
-        if "Location" in headers:
-            location = headers["Location"]
+        try:
+            headers = requests.get(address, headers={'parameters':self.ID}).headers
+            if "Location" in headers:
+                location = headers["Location"]
+        except:
+            print("\nFailed to establish connection")
         return location
 
     def send_request(self, data):
