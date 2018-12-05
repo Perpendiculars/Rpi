@@ -22,7 +22,8 @@ class Camera(object):
 
     def get_frame(self):
         success, image = self.cap.read()
-        ret, jpeg = cv2.imencode('.jpg', image)
+        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 60]
+        ret, jpeg = cv2.imencode('.jpg', image, encode_param)
         return jpeg.tostring()
 
     def init(self):
