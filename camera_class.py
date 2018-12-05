@@ -14,8 +14,8 @@ class Camera(object):
 
         self.cap = cv2.VideoCapture(0)
         self.cap.release()
-        self.cap.set(PROP_FRAME_WIDTH, 640)
-        self.cap.set(PROP_FRAME_HEIGHT, 480)
+        self.cap.set(PROP_FRAME_WIDTH, 320)
+        self.cap.set(PROP_FRAME_HEIGHT, 240)
 
     def __del__(self):
         self.cap.release()
