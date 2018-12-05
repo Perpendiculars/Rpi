@@ -1,13 +1,19 @@
 from button_class import buttonRpi
 from camera_class import Camera
 from server_class import Server
+import json
 
 cam = Camera()
 serv = Server()
 
 def gen(camera):
-    frame = camera.get_frame()
-    return frame
+    array = []
+    for i in range(12):
+        frame = camera.get_frame()
+        array.append()
+    data = {}
+    data["frames"] = array
+    return json.dumps(data)
 
 def button_callback():
     if cam.isOpened():
