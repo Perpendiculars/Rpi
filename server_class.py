@@ -2,7 +2,7 @@ import json
 import requests
 
 class Server:
-    address = 'https://intelligentnurse.azurewebsites.net/Translation/Set'
+    address = 'http://nursecloud.azurewebsites.net/Translation/Set'
     ID = '999666111'
     location = ''
 
