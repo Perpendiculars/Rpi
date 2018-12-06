@@ -2,8 +2,8 @@ import json
 import requests
 
 class Server:
-    address = 'https://intelligentnurse.azurewebsites.net/Translation/Set'
-    ID = '999666111'
+    address = 'http://nursecloud.azurewebsites.net/Translation/Set'
+    ID = '424242'
     location = ''
 
     def __init__(self, address = None):
